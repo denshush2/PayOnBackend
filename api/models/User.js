@@ -11,9 +11,24 @@ module.exports = {
       type: "string",
       required: true
     },
+    name: {
+      type: "string"
+    },
+    lastname: {
+      type: "string"
+    },
+    idNumber: {
+      type: "string"
+    },
+    creditCardTokenId: {
+      type: "string"
+    },
     verified: {
       type: "boolean",
       defaultsTo: true
+    },
+    verificationNumber: {
+      type: "string"
     }
   }
 };

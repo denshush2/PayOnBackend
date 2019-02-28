@@ -9,7 +9,10 @@
  */
 
 module.exports.routes = {
-  "get /pay": "PaymentController.testpay",
+  //PaymentController
+  "get /payment/ping": "PaymentController.ping",
+  "post /payment/createToken": "PaymentController.createToken",
+
   //AuthController
   "post /auth/login": "AuthController.login",
   "post /auth/signIn": "AuthController.signIn"
