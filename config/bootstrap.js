@@ -27,7 +27,10 @@ module.exports.bootstrap = async function() {
   // ```
   await User.createEach([
     {
-      phone: "3188967383"
+      phone: "3188967383",
+      name: "test",
+      lastname: "TestLastname",
+      idNumber: "123123"
     }
   ]);
 };
