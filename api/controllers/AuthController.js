@@ -50,8 +50,7 @@ module.exports = {
     res.ok(response);
   },
   async verifyToken(req, res) {
-    if (req.body.token) {
-    }
+    res.ok("ok");
   }
 
   // async signIn(req, res) {

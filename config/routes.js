@@ -15,5 +15,6 @@ module.exports.routes = {
 
   //AuthController
   "post /auth/login": "AuthController.login",
-  "post /auth/signIn": "AuthController.signIn"
+  "post /auth/signIn": "AuthController.signIn",
+  "post /auth/verifyToken": "AuthController.verifyToken"
 };

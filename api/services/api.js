@@ -39,7 +39,24 @@ const ping = async () => {
   );
   return response.data;
 };
-//TODO Format response
+const submitTransaction = async payload => {
+  const response = await axios.post(
+    config.payU.paymentUrl,
+    {
+      language: "es",
+      command: "CREATE_TOKEN",
+      merchant: {
+        apiLogin: config.payU.apiLogin,
+        apiKey: config.payU.apiKey
+      },
+      transaction
+    },
+    {
+      headers: config.payU.headers
+    }
+  );
+};
+
 const createToken = async payload => {
   /**
    * payload:{
@@ -87,5 +104,6 @@ const createToken = async payload => {
 
 module.exports = {
   ping,
-  createToken
+  createToken,
+  submitTransaction
 };
