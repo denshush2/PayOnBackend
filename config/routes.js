@@ -12,9 +12,14 @@ module.exports.routes = {
   //PaymentController
   "get /payment/ping": "PaymentController.ping",
   "post /payment/createToken": "PaymentController.createToken",
+  "post /payment/pay": "PaymentController.pay",
 
   //AuthController
   "post /auth/login": "AuthController.login",
+  "post /auth/verifyCode": "AuthController.verifyCode",
   "post /auth/signIn": "AuthController.signIn",
-  "post /auth/verifyToken": "AuthController.verifyToken"
+  "post /auth/verifyToken": "AuthController.verifyToken",
+
+  //UserController
+  "post /user/setInfo": "UserController.setInfo"
 };

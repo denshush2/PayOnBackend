@@ -1,4 +1,4 @@
-const { ping, createToken } = require("../services/api");
+const { ping, createToken, pay } = require("../services/api");
 module.exports = {
   friendlyName: "Payu",
 
@@ -7,7 +7,7 @@ module.exports = {
   inputs: {
     type: {
       type: "string",
-      description: "ping/createToken",
+      description: "ping/createToken/pay",
       required: true
     },
     payload: {
@@ -28,6 +28,9 @@ module.exports = {
     }
     if (inputs.type === "createToken") {
       response = await createToken(inputs.payload);
+    }
+    if (inputs.type === "pay") {
+      response = await pay(inputs.payload);
     }
     return exits.success(response);
   }

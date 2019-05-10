@@ -22,5 +22,8 @@ module.exports.policies = {
   },
   PaymentController: {
     "*": "isAuth"
+  },
+  UserController: {
+    "*": "isAuth"
   }
 };

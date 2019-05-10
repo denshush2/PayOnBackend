@@ -16,13 +16,26 @@ module.exports = {
     });
     res.ok(response);
   },
+
   async createToken(req, res) {
+    /*  Inputs 
+      {
+        phone:string,
+        card:{
+          paymentMethod,
+          number,
+          expirationDate
+        }
+      }
+  
+  */
+    let response = "";
+    console.log(req.body);
     let user = await User.findOne({ phone: req.body.phone });
     const payload = {
       user: {
         id: user.id.toString(),
-        name: user.name,
-        lastname: user.lastname,
+        name: req.body.card.name,
         idNumber: user.idNumber
       },
       card: req.body.card
@@ -35,15 +48,20 @@ module.exports = {
     user = await User.update({ id: payU.payerId }).set({
       creditCardTokenId: payU.creditCardTokenId
     });
-    res.ok("CreateToken");
+    response = await sails.helpers.response("success", "Card Created", {});
+    res.ok(response);
   },
+
   async pay(req, res) {
+    const payU = await sails.helpers.payU.with({
+      payload: { name: "asdasd" },
+      type: "pay"
+    });
     const response = await sails.helpers.response.with({
       type: "success",
       message: "Payment Succeed",
-      payload: {
-        idpayment: "2131234123"
-      }
+      payload: payU.data
     });
+    res.ok(response);
   }
 };

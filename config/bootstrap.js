@@ -30,7 +30,8 @@ module.exports.bootstrap = async function() {
       phone: "3188967383",
       name: "test",
       lastname: "TestLastname",
-      idNumber: "123123"
+      idNumber: "123123",
+      verificationNumber: 7383
     }
   ]);
 };
