@@ -12,6 +12,7 @@ module.exports = {
       const user = await sails.helpers.auth(req.body.phone);
       console.log("auth", user);
       const token = await sails.helpers.jwt("encrypt", { user });
+      console.log(token);
       response = await sails.helpers.response("success", "New User", {
         type: "new",
         token
@@ -49,9 +50,31 @@ module.exports = {
     }
     res.ok(response);
   },
-  async verifyToken(req, res) {
-    if (req.body.token) {
+  async verifyCode(req, res) {
+    let response = "";
+    if (req.body.phone && req.body.code) {
+      const user = await sails.helpers.auth(req.body.phone);
+      if (user.verificationNumber === req.body.code) {
+        const token = await sails.helpers.jwt("encrypt", { user });
+        response = await sails.helpers.response("success", "User Verified", {
+          token,
+          user: {
+            name: user.name,
+            lastname: user.lastname,
+            creditCard: user.creditCardTokenId
+          }
+        });
+      } else {
+        response = await sails.helpers.response("error", "Wrong code", {});
+      }
+    } else {
+      response = await sails.helpers.response("error", "Wrong data", {});
     }
+    res.ok(response);
+  },
+  async verifyToken(req, res) {
+    console.log("VERIFY TOKEN");
+    res.ok("ok");
   }
 
   // async signIn(req, res) {

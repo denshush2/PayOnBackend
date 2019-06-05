@@ -17,7 +17,16 @@ module.exports.policies = {
    ***************************************************************************/
 
   // '*': true,
+  AuthController: {
+    verifyToken: "isAuth"
+  },
   PaymentController: {
+    "*": "isAuth"
+  },
+  OrderController: {
+    "*": "isAuth"
+  },
+  UserController: {
     "*": "isAuth"
   }
 };
