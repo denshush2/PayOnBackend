@@ -9,8 +9,24 @@
  */
 
 module.exports.routes = {
-  "get /pay": "PaymentController.testpay",
+  //Test
+  "get /test": "TestController.test",
+
+  //PaymentController
+  "get /payment/ping": "PaymentController.ping",
+  "post /payment/createToken": "PaymentController.createToken",
+  "post /payment/pay": "PaymentController.pay",
+
   //AuthController
   "post /auth/login": "AuthController.login",
-  "post /auth/signIn": "AuthController.signIn"
+  "post /auth/verifyCode": "AuthController.verifyCode",
+  "post /auth/signIn": "AuthController.signIn",
+  "post /auth/verifyToken": "AuthController.verifyToken",
+
+  //UserController
+  "post /user/setInfo": "UserController.setInfo",
+  "get /user/getCreditCards": "UserController.getCreditCards",
+
+  //OrderController
+  "get /orders": "OrderController.getAllOrders"
 };

@@ -44,6 +44,8 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     default: {
+      adapter: "sails-mysql",
+      url: "mysql://root:root@localhost:3306/parking_dev"
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
@@ -133,9 +135,12 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
+      allRoutes: true,
+      origin: "*",
+      credentials: true,
+      methods: "GET, POST, PUT, DELETE, OPTIONS, HEAD",
+      headers: "content-type",
+      allowAnyOriginWithCredentialsUnsafe: true
     }
   },
 
@@ -225,10 +230,7 @@ module.exports = {
      * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
      *                                                                          *
      ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://example.com',
-    //   'https://staging.example.com',
-    // ],
+    onlyAllowOrigins: ["https://example.com", "https://staging.example.com"]
     /***************************************************************************
      *                                                                          *
      * If you are deploying a cluster of multiple servers and/or processes,     *
@@ -331,6 +333,7 @@ module.exports = {
    *                                                                         *
    ***************************************************************************/
   custom: {
+    jsonSecret: "alkdalmdasn21312lknASD",
     baseUrl: "https://example.com",
     internalEmailAddress: "support@example.com"
 
