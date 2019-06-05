@@ -12,8 +12,24 @@ module.exports = {
       const user = await User.updateOne({ phone: req.body.phone }).set({
         ...req.body.data
       });
-      console.log("USer", user);
+      console.log("User", user);
     }
     res.ok("asdasd");
+  },
+  getCreditCards: async (req, res) => {
+    let response = "";
+    const token = await sails.helpers.jwt("decrypt", {
+      token: req.headers.authorization
+    });
+    const creditCards = await sails.helpers.orm.creditCard(
+      "all",
+      token.user.id
+    );
+    response = await sails.helpers.response.with({
+      type: "success",
+      message: "get all orders",
+      payload: creditCards
+    });
+    res.ok(response);
   }
 };

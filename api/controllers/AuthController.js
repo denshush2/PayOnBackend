@@ -73,6 +73,7 @@ module.exports = {
     res.ok(response);
   },
   async verifyToken(req, res) {
+    console.log("VERIFY TOKEN");
     res.ok("ok");
   }
 

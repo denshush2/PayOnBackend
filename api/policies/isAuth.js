@@ -1,11 +1,13 @@
 module.exports = async function(req, res, proceed) {
   if (req.headers.authorization) {
-    const data = await sails.helpers.jwt("decrypt", {
-      token: req.headers.authorization
-    });
-    if (data) {
+    try {
+      const data = await sails.helpers.jwt("decrypt", {
+        token: req.headers.authorization
+      });
+
+      console.log("DATA", data);
       return proceed();
-    } else {
+    } catch (e) {
       const response = await sails.helpers.response(
         "error",
         "invalid token",

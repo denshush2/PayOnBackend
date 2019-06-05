@@ -9,6 +9,9 @@
  */
 
 module.exports.routes = {
+  //Test
+  "get /test": "TestController.test",
+
   //PaymentController
   "get /payment/ping": "PaymentController.ping",
   "post /payment/createToken": "PaymentController.createToken",
@@ -21,5 +24,9 @@ module.exports.routes = {
   "post /auth/verifyToken": "AuthController.verifyToken",
 
   //UserController
-  "post /user/setInfo": "UserController.setInfo"
+  "post /user/setInfo": "UserController.setInfo",
+  "get /user/getCreditCards": "UserController.getCreditCards",
+
+  //OrderController
+  "get /orders": "OrderController.getAllOrders"
 };
